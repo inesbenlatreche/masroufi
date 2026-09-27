@@ -1,0 +1,35 @@
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Python
+backend/.venv/
+backend/venv/
+backend/__pycache__/
+backend/**/__pycache__/
+*.py[cod]
+
+# Python caches
+.pytest_cache/
+.mypy_cache/
+.cache/
+huggingface/
+transformers_cache/
+
+# Node / Next.js
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.vercel/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

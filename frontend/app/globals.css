@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+:root {
+  --sand-50: #fbf7ef;
+  --sand-100: #f3ecdd;
+  --clay-500: #c6653e;
+  --clay-600: #b2532e;
+  --clay-700: #8f4325;
+  --pine-600: #35503f;
+  --pine-700: #253b2d;
+  --pine-900: #16241b;
+  --ink-800: #2a2420;
+  --ink-500: #6b6257;
+  --line-200: #e7dcc8;
+}
+
+@theme inline {
+  --color-sand-50: var(--sand-50);
+  --color-sand-100: var(--sand-100);
+  --color-clay-500: var(--clay-500);
+  --color-clay-600: var(--clay-600);
+  --color-clay-700: var(--clay-700);
+  --color-pine-600: var(--pine-600);
+  --color-pine-700: var(--pine-700);
+  --color-pine-900: var(--pine-900);
+  --color-ink-800: var(--ink-800);
+  --color-ink-500: var(--ink-500);
+  --color-line-200: var(--line-200);
+  --font-sans: "IBM Plex Sans Arabic", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background: var(--sand-100);
+  color: var(--ink-800);
+  font-family: "IBM Plex Sans Arabic", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Visible keyboard focus for all interactive elements */
+:focus-visible {
+  outline: 2px solid var(--pine-600);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Respect users who prefer reduced motion: kill animations globally */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
