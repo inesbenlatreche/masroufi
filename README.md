@@ -94,6 +94,50 @@ variance. This was confirmed in our own testing and is treated as a documented
 limitation, not a surprise discovered by a judge.
 
 ---
+### Model architecture
+
+The speech-recognition component is built as an adapted Whisper architecture rather than a model trained from scratch.
+
+The structure is:
+
+```text
+Algerian Darja / Darija-French speech
+                ↓
+        Audio preprocessing
+                ↓
+        Whisper Medium
+    `openai/whisper-medium`
+                ↓
+          LoRA adapter
+                ↓
+     Hadra ASR for Algerian Darja
+                ↓
+          Transcribed text
+                ↓
+     LLM transaction extraction
+```
+
+The base model, `openai/whisper-medium`, provides the general speech-recognition capability, while the **LoRA adapter** provides the specialization for Algerian Darja speech. This allows the project to adapt a pretrained speech model to the target dialect without training a complete ASR model from scratch.
+
+The adapted model is loaded and executed locally using **PyTorch with CUDA acceleration**. The resulting transcript is then passed to the separate LLM extraction stage, which converts the recognized speech into structured financial information.
+
+This separation is intentional: **the ASR model is responsible for speech-to-text, the LLM is responsible for interpreting the transcript, and the deterministic validation layer is responsible for deciding what can be stored.**
+
+### Model-level testing results
+
+The model was tested using real Darija and Darija/French-mixed recordings rather than relying only on the pretrained model's published benchmarks.
+
+Representative outputs included successful recognition of expressions such as:
+
+* `"راني حكمت 2000 رينار من عند الكليون هاد السمانة"`
+* `"جيت ديپونسي 500 دينار سير لو ترسپور"`
+* `"راني خلصت 15 ميل دينار علي الواي هذا الشهر"`
+
+The tests also showed that the model can produce phonetic Arabic-script representations of French expressions, which the downstream extraction model can interpret from context.
+
+On the local **NVIDIA RTX 2070 (8GB VRAM)**, transcription completed faster than the duration of every tested audio clip, with a measured real-time factor of approximately **0.3x–0.7x** and peak GPU memory usage of approximately **1.85GB**.
+
+The tests also exposed an important limitation: because the underlying training data is more representative of Central and Western Algerian dialects, **Eastern and Saharan speech can show greater recognition variance**. This limitation is treated as part of the model's current scope rather than hidden from evaluation.
 
 ## Transaction extraction
 
