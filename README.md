@@ -464,16 +464,3 @@ and a clear, deterministic boundary around what the AI is trusted to decide unas
 - Production deployment, authentication, and secure per-user data isolation
 - Broader testing with real-world Algerian financial expressions
 
----
-
-## Project status
-
-Hackathon prototype, actively developed. The current repository contains the frontend
-interface and the AI-powered backend pipeline required to demonstrate the core Masroufi
-experience.
-
----
-
-## License
-
-Provided as a hackathon prototype.
