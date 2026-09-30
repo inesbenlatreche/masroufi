@@ -30,7 +30,7 @@ Masroufi's job is to take that sentence and turn it into a structured, reviewabl
 financial record, without asking the user to translate their own thinking into a form
 first.
 
----
+<img src="docs/screenshots/Hero-chat.png" width="280" alt="Masroufi chat — confirming a salary transaction" />
 
 ## Solution
 
@@ -53,7 +53,6 @@ store / incomplete / clarification / discard
     ↓
 Frontend: confirmation, transaction history, financial summary, AI suggestion
 ```
-
 The deliberate separation between AI extraction and deterministic validation is the
 core design decision in this project: the model proposes, the rules layer decides.
 Numbers the user sees are never invented by the language model — they are validated,
@@ -215,7 +214,10 @@ hardware.
 ---
 
 ## Financial analytics
-
+<p float="left">
+  <img src="docs/screenshots/Analytics-suggestion.png" width="280" />
+  <img src="docs/screenshots/Analytics-suggestion2.png" width="280" />
+</p>
 The frontend derives its analytical views from validated transaction data returned by
 the backend — total income, total expenses, net balance, category breakdown, a
 multi-week trend, and a plain-language AI-generated suggestion for the week ahead. The
@@ -231,7 +233,12 @@ Masroufi is designed as a conversational, voice-first experience rather than a
 traditional accounting interface. The core interaction is intentionally simple:
 
 **Speak → Review → Confirm → Track**
+<p float="left">
+  <img src="docs/screenshots/Onboarding.png" width="280" alt="Onboarding — light mode" />
+  <img src="docs/screenshots/Onboarding2.png" width="280" alt="Onboarding — dark mode" />
+</p>
 
+*Onboarding in light and dark mode.*
 The interface includes conversational transaction entry, microphone recording,
 transaction confirmation and editing, a lightweight onboarding/profile step, a financial
 analytics view, AI-generated suggestions, and Darija/French-friendly content throughout,
